@@ -1,4 +1,4 @@
-from config import config
+from config import configue
 from src.creator_db import create_db
 from src.manager_db import DBManager
 from src.api import HeadHunterAPI
@@ -11,7 +11,7 @@ def main(employers_names: list[str]) -> None:
     print("Начинаю загрузку вакансий с сайта hh.ru\nПожалуйста, подождите...\n")
 
     # создание базы данных
-    params = config()
+    params = configue()
     create_db("hh_ru", params)
 
     # загрузка вакансий
@@ -25,7 +25,7 @@ def main(employers_names: list[str]) -> None:
 
     manager = DBManager("hh_ru", params)
 
-    # отображение общей информауии о полученных данных
+    # отображение общей информации о полученных данных
     print("Получены вакансии:")
     for data in manager.get_companies_and_vacancies_count():
         print(data)
